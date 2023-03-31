@@ -39,4 +39,4 @@ while True:
 
     # Rebroadcast Packets
     for ip_address in ip_addresses:
-        rebroadcast_socket.sendto(bytes("{}: {}".format(address[0], data.decode("utf-8")), "utf-8"), (ip_address, args.rebroadcast_port))
+        rebroadcast_socket.sendto(bytes("<{}>: {}".format(address[0], data.decode("utf-8")), "utf-8"), (ip_address, args.rebroadcast_port))
