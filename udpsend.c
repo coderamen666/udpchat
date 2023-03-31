@@ -8,6 +8,8 @@
 #include <strings.h>
 #include <time.h>
 
+#define BUFFER_SIZE 1024
+
 int main() {
     int sockfd;
     struct sockaddr_in dest_addr;
@@ -32,12 +34,12 @@ int main() {
     dest_addr.sin_addr.s_addr = inet_addr(dest_ip);
     dest_addr.sin_port = htons(dest_port);
 
-    char message[1028] = {0};
+    char message[BUFFER_SIZE] = {0};
 
     while(1){
 
         fprintf(stderr, "? ");
-        fgets(message, 1028, stdin);
+        fgets(message, BUFFER_SIZE, stdin);
         message[strlen(message) - 1] = 0;
 
         // Send the message
@@ -46,7 +48,7 @@ int main() {
             exit(1);
         }
 
-        bzero(message, 1028);
+        bzero(message, BUFFER_SIZE);
         time_t secs = time(0);
         struct tm *local = localtime(&secs);
         char timeString[1000];
