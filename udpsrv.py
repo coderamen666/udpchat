@@ -7,15 +7,16 @@ parser.add_argument('-l', '--listen_port', type=int, default=12345,
                     help='UDP port number to listen on')
 parser.add_argument('-r', '--rebroadcast_port', type=int, default=54321,
                     help='UDP port number to rebroadcast on')
+parser.add_argument('-a', '--address', type=str,
+                    default=socket.gethostbyname(socket.gethostname()),
+                    help='IP Address to connect to')
 args = parser.parse_args()
-
-server_ip = socket.gethostbyname(socket.gethostname())
 
 # Create a UDP socket for listening
 listen_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 # Bind the socket to the specified listen port
-listen_socket.bind((server_ip, args.listen_port))
+listen_socket.bind((args.address, args.listen_port))
 
 # Create a UDP socket for rebroadcasting
 rebroadcast_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -23,7 +24,7 @@ rebroadcast_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # Create a dictionary to store the IP addresses that have sent packets
 ip_addresses = {}
 
-print("Listening at IP address {} on port {}\n Rebroadcasting on port {};".format(server_ip, args.listen_port, args.rebroadcast_port))
+print("Listening at IP address {} on port {}\n Rebroadcasting on port {};".format(args.address, args.listen_port, args.rebroadcast_port))
 
 # Loop indefinitely
 while True:
