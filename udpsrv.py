@@ -8,7 +8,7 @@ parser.add_argument('-l', '--listen_port', type=int, default=12345,
 parser.add_argument('-r', '--rebroadcast_port', type=int, default=54321,
                     help='UDP port number to rebroadcast on')
 parser.add_argument('-a', '--address', type=str,
-                    default=socket.gethostbyname(socket.gethostname()),
+                    default="0.0.0.0",
                     help='IP Address to connect to')
 args = parser.parse_args()
 
