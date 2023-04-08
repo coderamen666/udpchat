@@ -9,7 +9,7 @@ parser.add_argument('-r', '--rebroadcast_port', type=int, default=54321,
                     help='UDP port number to rebroadcast on')
 parser.add_argument('-a', '--address', type=str,
                     default="0.0.0.0",
-                    help='IP Address to connect to')
+                    help='Internal DO NOT TOUCH')
 args = parser.parse_args()
 
 # Create a UDP socket for listening
