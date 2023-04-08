@@ -24,8 +24,7 @@ rebroadcast_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 # Create a dictionary to store the IP addresses that have sent packets
 ip_addresses = {}
 
-print("Listening at IP address {} on port {}\n Rebroadcasting on port {};".format(args.address, args.listen_port, args.rebroadcast_port))
-
+print("Listening at IP address {} on port {}; Rebroadcasting on port {}".format(socket.gethostbyname(socket.gethostname()), args.listen_port, args.rebroadcast_port))
 # Loop indefinitely
 while True:
     # Receive a packet
